@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Ensalamento</title>
+</head>
+
+<body>
+    <a href="home.html" class="btnVoltar">voltar</a>
+        <div class="entrada">
+            <span>Cadastro de ensalamentos</span>
+            <button onclick="abrirModal()" class="btn adicionar">Adicionar</button>
+        </div>
+        <div class="tabela">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dias</th>
+                        <th>Professores</th>
+                        <th>Salas</th>
+                        <th>Periodos</th>
+                        <th>Cursos</th>
+                        <th>Desafios</th>
+                        <th>Horarios</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody class="coteudo" id="conteudo">
+                </tbody>
+            </table>
+        </div>
+        <div id="box-modal" class="box-modal">
+            <div class="modal" id="modal">
+                <form>
+                    <label for="nome">Dia</label>
+                    <br><br>
+                    <select id="nomeDias"></select>
+                    <br><br>
+                    <label for="nome">Insiara o professor(a)</label>
+                    <br>
+                    <select id="nomeProfesores"></select>
+                    <br><br>
+                    <label for="nome">Insiara a sala</label>
+                    <br>
+                    <select id="nomeSalas"></select>
+                    <br><br>
+                    <label for="nome">Insiara o periodo</label>
+                    <br>
+                    <select id="nomePeriodos"></select>
+                    <br><br>
+                    <label for="nome">Insiara o curso</label>
+                    <br>
+                    <select id="nomeCursos"></select>
+                    <br><br>
+                    <label for="nome">Insiara o desafio</label>
+                    <br>
+                    <select id="nomeDesafios"></select>
+                    <br><br>
+                    <label for="nome">Insiara o horario</label>
+                    <br>
+                    <select id="nomeHorarios"></select>
+                    <br><br>
+                </form>
+                <br>
+                <div class="btn acoes-modal">
+                    <button class="btn salvarEdicao" id="salvarEdicao" onclick="salvarEdit()">Salvar</button>
+                    <button class="btn salvar" id="salvar" onclick="salvarPessoas()">Salvar</button>
+                    <button class="btn cancelar" onclick="fecharModal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scriptEns.js"></script>
+</body>
+</html>
