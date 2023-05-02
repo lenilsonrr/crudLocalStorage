@@ -25,7 +25,7 @@ listEnsalamento = conteudo;
             let dtNow = new Date();
             let dayTable = tableDays.getElementsByTagName('td')[index];
             dayTable.classList.remove('mes-anterior');
-            dayTable.classList.remove('procimo-mes');
+            dayTable.classList.remove('proximo-mes');
             dayTable.classList.remove('dia-atual');
             dayTable.innerHTML = dt.getDate();
             if (dt.getFullYear() == dtNow.getFullYear() && dt.getMonth() == dtNow.getMonth() && dt.getDate() == dtNow.getDate()) {
@@ -51,38 +51,16 @@ listEnsalamento = conteudo;
     botao_proximoMes.onclick = function () {
         mes++;
         if (mes > 11) {
-            for(let i =0 ; i < 7 ;i++){
-      
-                if(dias[i].className =="Qui" ){
-                    console.log(i)
-                    dias[i].innerText += "\n"+listEnsalamento[i].dia +"\n"+ listEnsalamento[i].professor;
-                }
-            }
-            mes = 0;
-            ano++;
-        }
         GetDaysCalemdar(mes, ano);
     }
     botao_mesAnt.onclick = function () {
         mes--;
-        for(let i =0 ; i < 7 ;i++){
-      
-            if(dias[i].className =="Qui" ){
-                console.log(i)
-                dias[i].innerText += "\n"+listEnsalamento[i].dia +"\n"+ listEnsalamento[i].professor;
-            }
-        }
+
         if (mes < 0) {
             mes = 11;
             ano--;
         }
         GetDaysCalemdar(mes, ano);
     }
-    for(let i =0 ; i < 7 ;i++){
-      
-        if(dias[i].className =="Qui" ){
-            console.log(i)
-            dias[i].innerText += "\n"+listEnsalamento[i].dia +"\n"+ listEnsalamento[i].professor;
-        }
     }
 })
