@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Horario</title>
+</head>
+
+<body>
+    <a href="home.html" class="btnVoltar">voltar</a>
+        <div class="entrada">
+            <span>Cadastro de horarios</span>
+            <button onclick="abrirModal()" class="btn adicionar">Adicionar</button>
+        </div>
+        <div class="tabela">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Horarios</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody class="coteudo" id="conteudo">
+                </tbody>
+            </table>
+        </div>
+        <div id="box-modal" class="box-modal">
+            <div class="modal" id="modal">
+                <form>
+                    <label for="nome">Digite o horario</label>
+                    <br><br>
+                    <input type="time" name="nome" id="nome" required>
+                    <br><br>
+                </form>
+                <br>
+                <div class="btn acoes-modal">
+                    <button class="btn salvarEdicao" id="salvarEdicao" onclick="salvarEdit()">Salvar</button>
+                    <button class="btn salvar" id="salvar" onclick="salvarPessoas()">Salvar</button>
+                    <button class="btn cancelar" onclick="fecharModal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scriptHor.js"></script>
+</body>
+</html>
