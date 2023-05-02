@@ -32,7 +32,7 @@ function fecharModal() {
     document.getElementById('salvarEdicao').style.display = 'none';
 }
 
-    function salvarPessoas () {
+    function salvarDesafio () {
         if (nome.value !="" ) {
             var desafio = { nomeP: nome.value };
         listDesafios.push(desafio);

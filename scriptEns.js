@@ -42,18 +42,20 @@ conteudoList(selectCur, listCursos);
 conteudoList(selectDes, listDesafios);
 conteudoList(selectHor, listHorarios);
 
-for(let i = 0; i < diasSemana.length ; i++){
+for (let i = 0; i < diasSemana.length; i++) {
     const option = document.createElement("option");
-        option.innerText = diasSemana[i];
-        selectDia.add(option)
+    option.innerText = diasSemana[i];
+    selectDia.add(option)
 }
 
 
 function conteudoList(elemento, list) {
-    for (intem of list) {
-        const option = document.createElement("option");
-        option.innerText = intem.nomeP;
-        elemento.add(option)
+    if (list) {
+        for (intem of list) {
+            const option = document.createElement("option");
+            option.innerText = intem.nomeP;
+            elemento.add(option)
+        }
     }
 }
 
@@ -66,7 +68,19 @@ if (conteudoNoLocalS) {
     const conteudo = JSON.parse(conteudoNoLocalS);
     listEnsalamento = conteudo;
 
-} exibirNaTela(listEnsalamento);
+}
+exibirNaTela(listEnsalamento);
+
+const dia = document.getElementById('nomeDias').value;
+const professor = document.getElementById('nomeProfesores').value;
+const sala = document.getElementById('nomeSalas').value;
+const periodo = document.getElementById('nomePeriodos').value;
+const curso = document.getElementById('nomeCursos').value;
+const desafio = document.getElementById('nomeDesafios').value;
+const hora = document.getElementById('nomeHorarios').value;
+const dataInicio = document.getElementById('dataInicio').value;
+const dataFim = document.getElementById('dataFim').value;
+
 
 const modal = document.getElementById("box-modal");
 var index;
@@ -74,13 +88,16 @@ var index;
 
 
 function abrirModal() {
+    if (listCursos != null || listDesafios != null || listHorarios != null || listPeriodos != null || listaProfessores != null || listaSalas != null) {
+        if (modal.style.display === 'block') {
+            modal.style.display = 'none';
+        } else {
+            modal.style.display = 'block';
+            selectDia.value = diasSemana[1];
 
-    if (modal.style.display === 'block') {
-        modal.style.display = 'none';
+        }
     } else {
-        modal.style.display = 'block';
-        selectDia.value = diasSemana[1];
-
+        alert('Todos os item anteriores tem que haver ao menos um item adicionado')
     }
 }
 
@@ -94,21 +111,12 @@ function fecharModal() {
     document.getElementById('salvarEdicao').style.display = 'none';
 }
 
-function salvarPessoas() {
-    const dia = document.getElementById('nomeDias').value;
-    const professor = document.getElementById('nomeProfesores').value;
-    const sala = document.getElementById('nomeSalas').value;
-    const periodo = document.getElementById('nomePeriodos').value;
-    const curso  = document.getElementById('nomeCursos').value;
-    const desafio = document.getElementById('nomeDesafios').value;
-    const hora  = document.getElementById('nomeHorarios').value;
-        var ensalamento = {  dia , professor, sala, periodo, curso, desafio, hora };
-   
-        listEnsalamento.push(ensalamento);
-        localStorage.setItem("dbEnsalamento", JSON.stringify(listEnsalamento));
-        exibirNaTela(listEnsalamento);
+function salvarEnsalamento() {
 
-   
+    var ensalamento = { dia, professor, sala, periodo, curso, desafio, hora, dataInicio, dataFim };
+    listEnsalamento.push(ensalamento);
+    localStorage.setItem("dbEnsalamento", JSON.stringify(listEnsalamento));
+    exibirNaTela(listEnsalamento);
 
 
 }
@@ -124,6 +132,8 @@ function exibirNaTela(listEnsalamento) {
         elemento += "<td>" + listEnsalamento[i].curso + "</td>";
         elemento += "<td>" + listEnsalamento[i].desafio + "</td>";
         elemento += "<td>" + listEnsalamento[i].hora + "</td>";
+        elemento += "<td>" + listEnsalamento[i].dataInicio + "</td>";
+        elemento += "<td>" + listEnsalamento[i].dataFim + "</td>";
         elemento += "<td><div class='acao-tabela'><button class='btn edit' onclick='editar(" + i + ")'>Edit</button><button class='btn cancelar' onclick='deletar(" + i + ")'>delet</button></div>";
         elemento += "</tr>";
     }
@@ -145,8 +155,15 @@ function editar(i) {
     modal.style.display = 'block';
     document.getElementById('salvar').style.display = 'none';
     document.getElementById('salvarEdicao').style.display = 'block';
-    
-
+    document.getElementById('nomeDias').value = listEnsalamento[i].dia
+    document.getElementById('nomeProfesores').value = listEnsalamento[i].professor;
+    document.getElementById('nomeSalas').value = listEnsalamento[i].sala;
+    document.getElementById('nomePeriodos').value = listEnsalamento[i].periodo;
+    document.getElementById('nomeCursos').value = listEnsalamento[i].curso;
+    document.getElementById('nomeDesafios').value = listEnsalamento[i].desafio;
+    document.getElementById('nomeHorarios').value = listEnsalamento[i].hora;
+    document.getElementById('dataInicio').value = listEnsalamento[i].dataInicio;
+    document.getElementById('dataFim').value = listEnsalamento[i].dataFim;
 
 }
 
@@ -155,9 +172,11 @@ function salvarEdit() {
     const professor = document.getElementById('nomeProfesores').value;
     const sala = document.getElementById('nomeSalas').value;
     const periodo = document.getElementById('nomePeriodos').value;
-    const curso  = document.getElementById('nomeCursos').value;
+    const curso = document.getElementById('nomeCursos').value;
     const desafio = document.getElementById('nomeDesafios').value;
-    const hora  = document.getElementById('nomeHorarios').value;
+    const hora = document.getElementById('nomeHorarios').value;
+    const dataInicio = document.getElementById('dataInicio').value;
+    const dataFim = document.getElementById('dataFim').value
 
     listEnsalamento[index].dia = dia;
     listEnsalamento[index].professor = professor;
@@ -166,11 +185,14 @@ function salvarEdit() {
     listEnsalamento[index].curso = curso;
     listEnsalamento[index].desafio = desafio;
     listEnsalamento[index].hora = hora;
+    listEnsalamento[index].dataInicio = dataInicio;
+    listEnsalamento[index].dataFim = dataFim;
+
     localStorage.setItem("dbEnsalamento", JSON.stringify(listEnsalamento));
     exibirNaTela(listEnsalamento);
     modal.style.display = 'none';
     document.getElementById('salvar').style.display = 'block';
     document.getElementById('salvarEdicao').style.display = 'none';
-    
+
 
 }

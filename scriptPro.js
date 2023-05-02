@@ -33,7 +33,7 @@ function fecharModal() {
     document.getElementById('salvarEdicao').style.display = 'none';
 }
 
-    function salvarPessoas () {
+    function salvarProfessor () {
         if (nome.value !="" ) {
             var professor = { nomeP: nome.value };
         listaProfessores.push(professor);

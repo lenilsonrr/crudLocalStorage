@@ -32,7 +32,7 @@ function fecharModal() {
     document.getElementById('salvarEdicao').style.display = 'none';
 }
 
-    function salvarPessoas () {
+    function salvarPeriodo () {
         if (nome.value !="" ) {
             var periodo = { nomeP: nome.value };
         listPeriodos.push(periodo);

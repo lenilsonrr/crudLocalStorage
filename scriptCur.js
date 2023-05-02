@@ -32,7 +32,7 @@ function fecharModal() {
     document.getElementById('salvarEdicao').style.display = 'none';
 }
 
-    function salvarPessoas () {
+    function salvarCurso () {
         if (nome.value !="" ) {
             var curso = { nomeP: nome.value };
         listCursos.push(curso);

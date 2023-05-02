@@ -26,6 +26,8 @@
                         <th>Cursos</th>
                         <th>Desafios</th>
                         <th>Horarios</th>
+                        <th>Inicio</th>
+                        <th>Fim</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -37,7 +39,7 @@
             <div class="modal" id="modal">
                 <form>
                     <label for="nome">Dia</label>
-                    <br><br>
+                    <br>
                     <select id="nomeDias"></select>
                     <br><br>
                     <label for="nome">Insiara o professor(a)</label>
@@ -64,11 +66,19 @@
                     <br>
                     <select id="nomeHorarios"></select>
                     <br><br>
+                    <label for="nome">Insiara a data inicio</label>
+                    <br>
+                    <input type="date" name="dataInicio" id="dataInicio">
+                    <br>
+                    <label for="nome">Insiara a data do fim</label>
+                    <br>
+                    <input type="date" name="dataFim" id="dataFim">
+                    <br>
                 </form>
                 <br>
                 <div class="btn acoes-modal">
                     <button class="btn salvarEdicao" id="salvarEdicao" onclick="salvarEdit()">Salvar</button>
-                    <button class="btn salvar" id="salvar" onclick="salvarPessoas()">Salvar</button>
+                    <button class="btn salvar" id="salvar" onclick="salvarEnsalamento()">Salvar</button>
                     <button class="btn cancelar" onclick="fecharModal()">Cancelar</button>
                 </div>
             </div>

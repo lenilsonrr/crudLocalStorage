@@ -34,7 +34,7 @@ function fecharModal() {
     document.getElementById('salvarEdicao').style.display = 'none';
 }
 
-    function salvarPessoas () {
+    function salvarSala () {
         if (nome.value !="" ) {
             var sala = { nomeP: nome.value };
         listaSalas.push(sala);

@@ -33,7 +33,7 @@ function fecharModal() {
     document.getElementById('salvarEdicao').style.display = 'none';
 }
 
-    function salvarPessoas () {
+    function salvarHorario () {
         if (nome.value !="" ) {
             var horario = { nomeP: nome.value };
         listHorarios.push(horario);
