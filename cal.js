@@ -1,16 +1,14 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const monthsBr = ['janiero', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
     const tableDays = document.getElementById("dias");
    const dias = document.querySelectorAll('td');
-   
+
    let listEnsalamento = [];
 
 const conteudoNoLocalS = window.localStorage.getItem('dbEnsalamento');
 const conteudo = JSON.parse(conteudoNoLocalS);
 listEnsalamento = conteudo;
-   
+
 
     function GetDaysCalemdar(mes, ano) {
         document.getElementById('mes').innerHTML = monthsBr[mes];
@@ -21,11 +19,11 @@ listEnsalamento = conteudo;
 
         for (let i = -firstDaysOfWeek, index = 0; i < (42 - firstDaysOfWeek); i++, index++) {
             let dt = new Date(ano, mes, i);
-            
+
             let dtNow = new Date();
             let dayTable = tableDays.getElementsByTagName('td')[index];
             dayTable.classList.remove('mes-anterior');
-            dayTable.classList.remove('proximo-mes');
+            dayTable.classList.remove('procimo-mes');
             dayTable.classList.remove('dia-atual');
             dayTable.innerHTML = dt.getDate();
             if (dt.getFullYear() == dtNow.getFullYear() && dt.getMonth() == dtNow.getMonth() && dt.getDate() == dtNow.getDate()) {
@@ -39,7 +37,7 @@ listEnsalamento = conteudo;
             }
 
         }
-        
+
     }
 
     let now = new Date()
@@ -51,16 +49,20 @@ listEnsalamento = conteudo;
     botao_proximoMes.onclick = function () {
         mes++;
         if (mes > 11) {
+            mes = 0;
+            ano++;
+        }
         GetDaysCalemdar(mes, ano);
     }
     botao_mesAnt.onclick = function () {
         mes--;
-
         if (mes < 0) {
             mes = 11;
             ano--;
         }
         GetDaysCalemdar(mes, ano);
     }
+    for(let i =0 ; i < 7 ;i++){
+
     }
 })
