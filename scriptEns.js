@@ -71,16 +71,6 @@ if (conteudoNoLocalS) {
 }
 exibirNaTela(listEnsalamento);
 
-const dia = document.getElementById('nomeDias').value;
-const professor = document.getElementById('nomeProfesores').value;
-const sala = document.getElementById('nomeSalas').value;
-const periodo = document.getElementById('nomePeriodos').value;
-const curso = document.getElementById('nomeCursos').value;
-const desafio = document.getElementById('nomeDesafios').value;
-const hora = document.getElementById('nomeHorarios').value;
-const dataInicio = document.getElementById('dataInicio').value;
-const dataFim = document.getElementById('dataFim').value;
-
 
 const modal = document.getElementById("box-modal");
 var index;
@@ -112,12 +102,20 @@ function fecharModal() {
 }
 
 function salvarEnsalamento() {
-
+    const dia = document.getElementById('nomeDias').value;
+    const professor = document.getElementById('nomeProfesores').value;
+    const sala = document.getElementById('nomeSalas').value;
+    const periodo = document.getElementById('nomePeriodos').value;
+    const curso = document.getElementById('nomeCursos').value;
+    const desafio = document.getElementById('nomeDesafios').value;
+    const hora = document.getElementById('nomeHorarios').value;
+    const dataInicio = document.getElementById('dataInicio').value;
+    const dataFim = document.getElementById('dataFim').value;
+    
     var ensalamento = { dia, professor, sala, periodo, curso, desafio, hora, dataInicio, dataFim };
     listEnsalamento.push(ensalamento);
     localStorage.setItem("dbEnsalamento", JSON.stringify(listEnsalamento));
     exibirNaTela(listEnsalamento);
-
 
 }
 
